@@ -11,7 +11,7 @@ if (mysqli_num_rows($result) === 1) {
         //mengambil data dari dari variable result merubah jadi array
         $row = mysqli_fetch_assoc($result);
         //cek password
-        if ($_POST["password"] == $row["password"]) {
+        if (md5($_POST["password"]) == $row["password"]) {
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['x-y'] = $row['role'] == "admin" ? "x" : "y";

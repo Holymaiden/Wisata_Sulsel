@@ -9,7 +9,7 @@ if ($_POST['username'] == "") {
 $result = mysqli_query($connect, "SELECT * FROM users WHERE username='" . $_POST['username'] . "'");
 
 if (mysqli_num_rows($result) != 1) {
-        $result = mysqli_query($connect, "UPDATE users SET username='" . $_POST['username'] . "' WHERE id='" . $_POST['id'] . "'");
+        $result = update("users", "username='" . $_POST['username'] . "' WHERE id='" . $_POST['id'] . "'");
         if ($result) {
                 echo json_encode(array("status" => "success", "message" => "Berhasil Update Username"));
         } else {

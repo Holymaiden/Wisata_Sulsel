@@ -19,7 +19,7 @@ $day = substr($day, 0, -1);
 if ($_POST['openDay'] == "")
         $_POST['openDay'] = null;
 //mengambil data dari dari variable result merubah jadi array
-$result = mysqli_query($connect, "UPDATE destinations SET `name`='" . $_POST['name'] . "', description='" . $_POST['description'] . "', address='" . $_POST['address'] . "'
+$result = update("destinations", "`name`='" . $_POST['name'] . "', description='" . $_POST['description'] . "', address='" . $_POST['address'] . "'
         , entry_fee='" . $_POST['fee'] . "', open_hour='" . $_POST['openHour'] . "', close_hour='" . $_POST['closeHour'] . "'
         ,  open_day='" . $day . "', type_id='" . $category . "'
         WHERE id='" . $_GET['id'] . "'");

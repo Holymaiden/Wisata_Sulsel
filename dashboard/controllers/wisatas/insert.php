@@ -21,7 +21,7 @@ $slug = slug($_POST['name']);
 if ($_POST['openDay'] == "")
         $_POST['openDay'] = null;
 //mengambil data dari dari variable result merubah jadi array
-$result = mysqli_query($connect, "INSERT INTO destinations VALUES ('','" . $_POST['name'] . "', '" . $slug . "','" . $_POST['description'] . "','" . $_POST['address'] . "'
+$result = tambah("destinations", "('','" . $_POST['name'] . "', '" . $slug . "','" . $_POST['description'] . "','" . $_POST['address'] . "'
         , '" . $category . "', '" . $_POST['openHour'] . "', '" . $_POST['closeHour'] . "', '" . $day . "', " . $_POST['fee'] . ")");
 //cek password
 if ($result) {

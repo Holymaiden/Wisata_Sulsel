@@ -9,7 +9,7 @@ if (!$des) {
 }
 $type = many("SELECT type FROM types WHERE id IN (" . $des['type_id'] . ")");
 $images = many("SELECT * FROM images WHERE destination_id = '" . $des['id'] . "'");
-$late =  many("SELECT destinations.*,images.image FROM destinations LEFT JOIN images ON destinations.id = images.destination_id ORDER BY destinations.id DESC LIMIT 3");
+$late =  many("SELECT * FROM destinations ORDER BY id DESC LIMIT 3");
 if (isset($_SESSION['username']))
     tambah("destination_log", "('','" . $_SESSION['id'] . "', '" . $des['id'] . "', '" . date('Y-m-d H:i:s') . "')");
 ?>
@@ -86,31 +86,7 @@ if (isset($_SESSION['username']))
                 <div class="rn-pd-content-area">
                     <div class="pd-title-area">
                         <h4 class="title"><?= $des['name'] ?></h4>
-                        <div class="pd-react-area">
-                            <div class="heart-count">
-                                <i data-feather="heart"></i>
-                                <span>33</span>
-                            </div>
-                            <div class="count">
-                                <div class="share-btn share-btn-activation dropdown">
-                                    <button class="icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <svg viewBox="0 0 14 4" fill="none" width="16" height="16" class="sc-bdnxRM sc-hKFxyN hOiKLt">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2C3.5 2.82843 2.82843 3.5 2 3.5C1.17157 3.5 0.5 2.82843 0.5 2C0.5 1.17157 1.17157 0.5 2 0.5C2.82843 0.5 3.5 1.17157 3.5 2ZM8.5 2C8.5 2.82843 7.82843 3.5 7 3.5C6.17157 3.5 5.5 2.82843 5.5 2C5.5 1.17157 6.17157 0.5 7 0.5C7.82843 0.5 8.5 1.17157 8.5 2ZM11.999 3.5C12.8274 3.5 13.499 2.82843 13.499 2C13.499 1.17157 12.8274 0.5 11.999 0.5C11.1706 0.5 10.499 1.17157 10.499 2C10.499 2.82843 11.1706 3.5 11.999 3.5Z" fill="currentColor"></path>
-                                        </svg>
-                                    </button>
 
-                                    <div class="share-btn-setting dropdown-menu dropdown-menu-end">
-                                        <button type="button" class="btn-setting-text share-text" data-bs-toggle="modal" data-bs-target="#shareModal">
-                                            Share
-                                        </button>
-                                        <button type="button" class="btn-setting-text report-text" data-bs-toggle="modal" data-bs-target="#reportModal">
-                                            Report
-                                        </button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <!-- <span class="bid">Height bid <span class="price">0.11wETH</span></span> -->
                     <h6 class="title-name">
@@ -140,90 +116,19 @@ if (isset($_SESSION['username']))
                             </div>
                         </div>
                     </div>
-                    <a class="btn btn-primary-alta" href="#">Unlockable content included</a>
+                    <!-- <a class="btn btn-primary-alta" href="#">Unlockable content included</a> -->
                     <div class="rn-bid-details">
                         <div class="tab-wrapper-one">
                             <nav class="tab-button-one">
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="false">Bids</button>
                                     <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="true">Details</button>
-                                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">History</button>
+                                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Recommended</button>
                                 </div>
                             </nav>
                             <div class="tab-content rn-bid-content" id="nav-tabContent">
-                                <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <!-- single creator -->
-                                    <div class="top-seller-inner-one">
-                                        <div class="top-seller-wrapper">
-                                            <div class="thumbnail">
-                                                <a href="#"><img src="assets/images/client/client-3.png" alt="Nft_Profile"></a>
-                                            </div>
-                                            <div class="top-seller-content">
-                                                <span>0.11wETH by <a href="#">Allen Waltker</a></span>
-                                                <span class="count-number">
-                                                    1 hours ago
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- single creator -->
-                                    <!-- single creator -->
-                                    <div class="top-seller-inner-one">
-                                        <div class="top-seller-wrapper">
-                                            <div class="thumbnail">
-                                                <a href="#"><img src="assets/images/client/client-4.png" alt="Nft_Profile"></a>
-                                            </div>
-                                            <div class="top-seller-content">
-                                                <span>0.09wETH by <a href="#">Joe Biden</a></span>
-                                                <span class="count-number">
-                                                    1.30 hours ago
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- single creator -->
-                                </div>
                                 <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                     <!-- single -->
                                     <div class="rn-pd-bd-wrapper">
-                                        <div class="top-seller-inner-one">
-                                            <!-- <p class="disc">Lorem ipsum dolor, sit amet consectetur adipisicing
-                                                    elit. Doloribus debitis nemo deserunt.</p> -->
-                                            <h6 class="name-title">
-                                                Owner
-                                            </h6>
-                                            <div class="top-seller-wrapper">
-                                                <div class="thumbnail">
-                                                    <a href="#"><img src="assets/images/client/client-1.png" alt="Nft_Profile"></a>
-                                                </div>
-                                                <div class="top-seller-content">
-                                                    <a href="#">
-                                                        <h6 class="name">Brodband</h6>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- single -->
-                                        <div class="rn-pd-sm-property-wrapper">
-                                            <h6 class="pd-property-title">
-                                                Property
-                                            </h6>
-                                            <div class="property-wrapper">
-                                                <!-- single property -->
-                                                <div class="pd-property-inner">
-                                                    <span class="color-body type">HYPE TYPE</span>
-                                                    <span class="color-white value">CALM AF (STILL)</span>
-                                                </div>
-                                                <!-- single property End -->
-                                                <!-- single property -->
-                                                <div class="pd-property-inner">
-                                                    <span class="color-body type">BASTARDNESS</span>
-                                                    <span class="color-white value">C00LIO BASTARD</span>
-                                                </div>
-                                                <!-- single property End -->
-                                            </div>
-                                        </div>
-                                        <!-- single -->
                                         <!-- single -->
                                         <div class="rn-pd-sm-property-wrapper">
                                             <h6 class="pd-property-title">
@@ -245,126 +150,17 @@ if (isset($_SESSION['username']))
                                 </div>
                                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                     <!-- single creator -->
-                                    <div class="top-seller-inner-one">
-                                        <div class="top-seller-wrapper">
-                                            <div class="thumbnail">
-                                                <a href="#"><img src="assets/images/client/client-3.png" alt="Nft_Profile"></a>
-                                            </div>
-                                            <div class="top-seller-content">
-                                                <span>0.11wETH by<a href="#">Allen Waltker</a></span>
-                                                <span class="count-number">
-                                                    1 hours ago
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- single creator -->
-                                    <!-- single creator -->
-                                    <div class="top-seller-inner-one mt--20">
-                                        <div class="top-seller-wrapper">
-                                            <div class="thumbnail">
-                                                <a href="#"><img src="assets/images/client/client-2.png" alt="Nft_Profile"></a>
-                                            </div>
-                                            <div class="top-seller-content">
-                                                <span>0.11wETH by<a href="#">Allen Waltker</a></span>
-                                                <span class="count-number">
-                                                    1 hours ago
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- single creator -->
-                                    <!-- single creator -->
-                                    <div class="top-seller-inner-one mt--20">
-                                        <div class="top-seller-wrapper">
-                                            <div class="thumbnail">
-                                                <a href="#"><img src="assets/images/client/client-4.png" alt="Nft_Profile"></a>
-                                            </div>
-                                            <div class="top-seller-content">
-                                                <span>0.11wETH by<a href="#">Allen Waltker</a></span>
-                                                <span class="count-number">
-                                                    1 hours ago
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- single creator -->
-                                    <!-- single creator -->
-                                    <div class="top-seller-inner-one mt--20">
-                                        <div class="top-seller-wrapper">
-                                            <div class="thumbnail">
-                                                <a href="#"><img src="assets/images/client/client-5.png" alt="Nft_Profile"></a>
-                                            </div>
-                                            <div class="top-seller-content">
-                                                <span>0.11wETH by<a href="#">Allen Waltker</a></span>
-                                                <span class="count-number">
-                                                    1 hours ago
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- single creator -->
-                                    <!-- single creator -->
-                                    <div class="top-seller-inner-one mt--20">
-                                        <div class="top-seller-wrapper">
-                                            <div class="thumbnail">
-                                                <a href="#"><img src="assets/images/client/client-8.png" alt="Nft_Profile"></a>
-                                            </div>
-                                            <div class="top-seller-content">
-                                                <span>0.11wETH by<a href="#">Allen Waltker</a></span>
-                                                <span class="count-number">
-                                                    1 hours ago
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div id="recomens"></div>
                                     <!-- single creator -->
                                 </div>
                             </div>
                         </div>
                         <div class="place-bet-area">
-                            <div class="rn-bet-create">
-                                <div class="bid-list winning-bid">
-                                    <h6 class="title">Winning bit</h6>
-                                    <div class="top-seller-inner-one">
-                                        <div class="top-seller-wrapper">
-                                            <div class="thumbnail">
-                                                <a href="#"><img src="assets/images/client/client-7.png" alt="Nft_Profile"></a>
-                                            </div>
-                                            <div class="top-seller-content">
-                                                <span class="heighest-bid">Heighest bid <a href="#">Atif
-                                                        aslam</a></span>
-                                                <span class="count-number">
-                                                    0.115wETH
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bid-list left-bid">
-                                    <h6 class="title">Auction has ended</h6>
-                                    <div class="countdown mt--15" data-date="2025-12-09">
-                                        <div class="countdown-container days">
-                                            <span class="countdown-value">87</span>
-                                            <span class="countdown-heading">D's</span>
-                                        </div>
-                                        <div class="countdown-container hours">
-                                            <span class="countdown-value">23</span>
-                                            <span class="countdown-heading">H's</span>
-                                        </div>
-                                        <div class="countdown-container minutes">
-                                            <span class="countdown-value">38</span>
-                                            <span class="countdown-heading">Min's</span>
-                                        </div>
-                                        <div class="countdown-container seconds">
-                                            <span class="countdown-value">27</span>
-                                            <span class="countdown-heading">Sec</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <!-- <a class="btn btn-primary-alta mt--30" href="#">Place a Bid</a> -->
-                            <button type="button" class="btn btn-primary-alta mt--30" data-bs-toggle="modal" data-bs-target="#placebidModal">Place a Bid</button>
+                            <button type="button" class="btn btn-primary-alta" id="<?= isset($_SESSION['username']) ? 'recomenBtn' : '' ?>"><?php if (isset($_SESSION['username'])) {
+                                                                                                                                                $recomment = single("SELECT * FROM `recommendations` WHERE `user_id` = '" . $_SESSION['id'] . "' AND `destination_id` = '" . $des['id'] . "'");
+                                                                                                                                                echo $recomment == null ? 'Rekomendasikan' : 'Hapus Rekomendasi';
+                                                                                                                                            } else echo 'Rekomendasikan' ?></button>
                         </div>
                     </div>
                 </div>
@@ -499,14 +295,23 @@ if (isset($_SESSION['username']))
                             <div data-sal="slide-up" data-sal-delay="<?= 150 + ($id * 50) ?>" data-sal-duration="800" class="col-xl-4 col-lg-6 col-md-6 col-12">
                                 <div class="product-style-one no-overlay">
                                     <div class="card-thumbnail">
-                                        <a href="wisata.php?w=<?= $v['slug'] ?>"><img src="images/<?= $v['image'] ?>" alt="NFT_portfolio"></a>
+                                        <?php
+                                        $image = single("SELECT * FROM images WHERE destination_id='" . $v['id'] . "'");
+                                        ?>
+                                        <a href="wisata.php?w=<?= $v['slug'] ?>"><img src="images/<?= $image['image'] ?>" alt="NFT_portfolio"></a>
                                     </div>
                                     <div class="product-share-wrapper">
                                         <div class="profile-share">
-                                            <a href="author.html" class="avatar" data-tooltip="Jone lee"><img src="assets/images/client/client-1.png" alt="Nft_Profile"></a>
-                                            <a href="author.html" class="avatar" data-tooltip="Jone Due"><img src="assets/images/client/client-2.png" alt="Nft_Profile"></a>
-                                            <a href="author.html" class="avatar" data-tooltip="Nisat Tara"><img src="assets/images/client/client-3.png" alt="Nft_Profile"></a>
-                                            <a class="more-author-text" href="#">9+ Place Bit.</a>
+                                            <?php
+                                            $images = many("SELECT * FROM images WHERE destination_id='" . $v['id'] . "'");
+                                            foreach ($images as $i => $im) :
+                                            ?>
+                                                <a class="avatar" data-tooltip="Image <?= $i + 1 ?>"><img src="images/<?= $im['image'] ?>" alt="Wisata"></a>
+                                            <?php endforeach ?>
+                                            <a class="more-author-text" href="#"><?php $type = many("SELECT `type` FROM types where id IN (" . $v['type_id'] . ")");
+                                                                                    $type = array_column($type, 'type');
+                                                                                    echo substr(implode(', ', $type), 0, 30);
+                                                                                    ?></a>
                                         </div>
                                         <div class="share-btn share-btn-activation dropdown">
                                             <button class="icon" data-bs-toggle="dropdown" aria-expanded="false">
@@ -526,10 +331,10 @@ if (isset($_SESSION['username']))
 
                                         </div>
                                     </div>
-                                    <a href="product-details.html"><span class="product-name"><?= $v['name'] ?></span></a>
+                                    <a href="wisata.php?w=<?= $v['slug'] ?>"><span class="product-name"><?= $v['name'] ?></span></a>
                                     <span class="latest-bid"><?= substr($v['description'], 0, 120) ?>...</span>
                                     <div class="bid-react-area">
-                                        <div class="last-bid"><?= ($v['open_day'] == null) ? 'Buka Tiap Hari' : 'Buka ' . $v['open_day']  ?></div>
+                                        <div class="last-bid"><?= ($v['open_day'] == null) ? 'Buka Tiap Hari' : substr($v['open_day'], 0, 20)  ?></div>
                                         <div class="react-area">
                                             <span class="last-bid"><?= $v['entry_fee'] == 0 ? 'Gratis' : 'Rp. ' . $v['entry_fee'] ?></span>
                                         </div>
@@ -546,93 +351,6 @@ if (isset($_SESSION['username']))
 </div>
 <!-- blog details area end -->
 
-
-
-<!-- Modal -->
-<div class="rn-popup-modal share-modal-wrapper modal fade" id="shareModal" tabindex="-1" aria-hidden="true">
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i data-feather="x"></i></button>
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content share-wrapper">
-            <div class="modal-header share-area">
-                <h5 class="modal-title">Share this NFT</h5>
-            </div>
-            <div class="modal-body">
-                <ul class="social-share-default">
-                    <li><a href="#"><span class="icon"><i data-feather="facebook"></i></span><span class="text">facebook</span></a></li>
-                    <li><a href="#"><span class="icon"><i data-feather="twitter"></i></span><span class="text">twitter</span></a></li>
-                    <li><a href="#"><span class="icon"><i data-feather="linkedin"></i></span><span class="text">linkedin</span></a></li>
-                    <li><a href="#"><span class="icon"><i data-feather="instagram"></i></span><span class="text">instagram</span></a></li>
-                    <li><a href="#"><span class="icon"><i data-feather="youtube"></i></span><span class="text">youtube</span></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="rn-popup-modal report-modal-wrapper modal fade" id="reportModal" tabindex="-1" aria-hidden="true">
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i data-feather="x"></i></button>
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content report-content-wrapper">
-            <div class="modal-header report-modal-header">
-                <h5 class="modal-title">Why are you reporting?
-                </h5>
-            </div>
-            <div class="modal-body">
-                <p>Describe why you think this item should be removed from marketplace</p>
-                <div class="report-form-box">
-                    <h6 class="title">Message</h6>
-                    <textarea name="message" placeholder="Write issues"></textarea>
-                    <div class="report-button">
-                        <button type="button" class="btn btn-primary mr--10 w-auto">Report</button>
-                        <button type="button" class="btn btn-primary-alta w-auto" data-bs-dismiss="modal">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="rn-popup-modal placebid-modal-wrapper modal fade" id="placebidModal" tabindex="-1" aria-hidden="true">
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i data-feather="x"></i></button>
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Place a bid</h3>
-            </div>
-            <div class="modal-body">
-                <p>You are about to purchase This Product Form Nuron</p>
-                <div class="placebid-form-box">
-                    <h5 class="title">Your bid</h5>
-                    <div class="bid-content">
-                        <div class="bid-content-top">
-                            <div class="bid-content-left">
-                                <input id="value" type="text" name="value">
-                                <span>wETH</span>
-                            </div>
-                        </div>
-
-                        <div class="bid-content-mid">
-                            <div class="bid-content-left">
-                                <span>Your Balance</span>
-                                <span>Service fee</span>
-                                <span>Total bid amount</span>
-                            </div>
-                            <div class="bid-content-right">
-                                <span>9578 wETH</span>
-                                <span>10 wETH</span>
-                                <span>9588 wETH</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bit-continue-button">
-                        <a href="connect.html" class="btn btn-primary w-100">Place a bid</a>
-                        <button type="button" class="btn btn-primary-alta mt--10" data-bs-dismiss="modal">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Start Footer Area -->
 <div class="rn-footer-one rn-section-gap bg-color--1 mt--100 mt_md--80 mt_sm--80">
 </div>
@@ -643,14 +361,24 @@ require_once("./templates/footer.php")
 <script type="text/javascript">
     $(document).ready(function() {
         var id = '<?= $des['id'] ?>';
-        loadData(id);
+        loadData();
+        loadRecomen();
 
-        function loadData(id) {
+        function loadData() {
             $.ajax({
                 type: "POST",
                 url: './controllers/wisata/getComment.php?id=' + id,
             }).then(function(response) {
                 $('#comments').html(response);
+            });
+        }
+
+        function loadRecomen() {
+            $.ajax({
+                type: "GET",
+                url: './controllers/wisata/recomen.php?id=' + id,
+            }).then(function(response) {
+                $('#recomens').html(response);
             });
         }
 
@@ -677,6 +405,44 @@ require_once("./templates/footer.php")
                         icon: 'error',
                         title: 'Oops...',
                         text: jsonData.message,
+                    })
+                } else {
+                    Swal.fire(
+                        'Invalid Credentials!',
+                    )
+                }
+            });
+        });
+
+        $('#recomenBtn').click(function(e) {
+            console.log($('#recomenBtn').html());
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: './controllers/wisata/insertRecomen.php?option=',
+                data: {
+                    id: id,
+                    user: '<?= $_SESSION['id'] ?>',
+                    option: $('#recomenBtn').html()
+                },
+            }).then(function(response) {
+                console.log(response)
+                var jsonData = JSON.parse(response);
+
+                if (jsonData.status == "success") {
+                    $('#recomenBtn').html(jsonData.data);
+                    loadRecomen();
+                    iziToast.success({
+                        title: 'Successfull.',
+                        message: 'Recomend!',
+                        position: 'topRight',
+                        timeout: 1500
+                    });
+                } else if (jsonData.status == "error") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: response.message,
                     })
                 } else {
                     Swal.fire(

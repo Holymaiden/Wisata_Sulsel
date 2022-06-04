@@ -8,7 +8,6 @@ $data = many("SELECT * FROM users WHERE username LIKE '%" . $_GET['cari'] . "%' 
                 <tr>
                         <th>No</th>
                         <th>Username</th>
-                        <th>Password</th>
                         <th>Role</th>
                         <th>Actions</th>
                 </tr>
@@ -25,7 +24,6 @@ $data = many("SELECT * FROM users WHERE username LIKE '%" . $_GET['cari'] . "%' 
                                 <tr>
                                         <td><?= $id + 1 ?></td>
                                         <td><?= $v['username'] ?></td>
-                                        <td><?= $v['password'] ?></td>
                                         <td><?= ucfirst($v['role']) ?></td>
                                         <td>
                                                 <button type="button" onclick="editForm(<?= $v['id'] ?>)" class="btn btn-warning btn-floating"><i class="ti-settings"></i></button>
@@ -40,7 +38,6 @@ $data = many("SELECT * FROM users WHERE username LIKE '%" . $_GET['cari'] . "%' 
                 <tr>
                         <th>No</th>
                         <th>Username</th>
-                        <th>Password</th>
                         <th>Role</th>
                         <th>Actions</th>
                 </tr>

@@ -135,29 +135,6 @@ require_once './templates/header.php';
         </div>
     </div>
 </div>
-<!-- Modal -->
-<div class="rn-popup-modal report-modal-wrapper modal fade" id="reportModal" tabindex="-1" aria-hidden="true">
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i data-feather="x"></i></button>
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content report-content-wrapper">
-            <div class="modal-header report-modal-header">
-                <h5 class="modal-title">Why are you reporting?
-                </h5>
-            </div>
-            <div class="modal-body">
-                <p>Describe why you think this item should be removed from marketplace</p>
-                <div class="report-form-box">
-                    <h6 class="title">Message</h6>
-                    <textarea name="message" placeholder="Write issues"></textarea>
-                    <div class="report-button">
-                        <button type="button" class="btn btn-primary mr--10 w-auto">Report</button>
-                        <button type="button" class="btn btn-primary-alta w-auto" data-bs-dismiss="modal">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Start Footer Area -->
 <div class="rn-footer-one rn-section-gap bg-color--1 mt--100 mt_md--80 mt_sm--80">
 
@@ -169,6 +146,9 @@ require_once("./templates/footer.php")
 
 <script type="text/javascript">
     $(document).ready(function() {
+        let c = "<?php if (count($_GET) > 0) echo ($_GET['v']);
+                    else echo ('') ?>";
+        console.log(c);
         var $pagination = $('.twbs-pagination');
         var defaultOpts = {
             totalPages: 1,
@@ -180,7 +160,7 @@ require_once("./templates/footer.php")
 
         $pagination.twbsPagination(defaultOpts);
 
-        loadpage("", 6)
+        loadpage(c, 6)
 
         function loaddata(to, end, cari, jml) {
             $.ajax({

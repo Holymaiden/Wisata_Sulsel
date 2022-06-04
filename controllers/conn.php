@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "tb_destination");
+$connect = mysqli_connect("localhost", "root", "", "db_destination");
 
 function single($query)
 {

@@ -33,9 +33,6 @@ foreach ($destination as $id => $v) : ?>
                                                 <button type="button" class="btn-setting-text share-text" data-bs-toggle="modal" data-bs-target="#shareModal">
                                                         Share
                                                 </button>
-                                                <button type="button" class="btn-setting-text report-text" data-bs-toggle="modal" data-bs-target="#reportModal">
-                                                        Report
-                                                </button>
                                         </div>
 
                                 </div>

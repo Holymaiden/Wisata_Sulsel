@@ -15,7 +15,7 @@ if (mysqli_num_rows($result) != 1) {
                 return;
         }
         //mengambil data dari dari variable result merubah jadi array
-        $result = mysqli_query($connect, "INSERT INTO users (username, password) VALUES ('" . $_POST['username'] . "', '" . $_POST['password'] . "')");
+        $result = tambah("users", "(username, password) VALUES ('" . $_POST['username'] . "', '" . $_POST['password'] . "')");
         //cek password
         if ($result) {
                 echo json_encode(array("status" => "success", "message" => "Berhasil Registrasi"));

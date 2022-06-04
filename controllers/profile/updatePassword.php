@@ -17,7 +17,7 @@ if ($_POST['password'] != $_POST['password2']) {
         return;
 }
 
-$result = mysqli_query($connect, "UPDATE users SET `password`='" . $_POST['password'] . "' WHERE id='" . $_GET['id'] . "'");
+$result = update("users", "`password`='" . $_POST['password'] . "' WHERE id='" . $_GET['id'] . "'");
 
 if ($result) {
         echo json_encode(array("status" => "success", "message" => "Berhasil Update Password"));

@@ -12,8 +12,8 @@
                                 </div>
 
                                 <div class="header-logo">
-                                        <a href=index.php>
-                                                <img class="logo" src="./assets/media/image/logo.png" alt="logo">
+                                        <a href=../index.php>
+                                                <img class="logo" src="../assets/images/logo/logo-white.png" alt="logo">
                                         </a>
                                 </div>
                         </div>
