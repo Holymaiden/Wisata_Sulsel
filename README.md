@@ -1,5 +1,7 @@
 # Wisata_Sulsel Project
 
+This project make with php native and mysql
+
 # Home
 ![Example Demo](https://github.com/Holymaiden/Wisata_Sulsel/blob/main/images/git/Wisata1.png)
 
