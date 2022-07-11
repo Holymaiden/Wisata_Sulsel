@@ -16,7 +16,7 @@ This project make with php native and mysql
 # Installation
 ```
 $ git clone 
-$ cd react-wp-unistore
+$ cd wisata-sulsel
 $ import sql database 
 # install PHP and webserver and run
 # open localhost/wisata-sulsel in your browser
