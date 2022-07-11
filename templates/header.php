@@ -18,7 +18,6 @@
                                                         <li>
                                                                 <a href="help.php">Help</a>
                                                         </li>
-
                                                 </ul>
                                                 <!-- End Mainmanu Nav -->
                                         </nav>
